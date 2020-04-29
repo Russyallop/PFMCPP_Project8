@@ -51,14 +51,23 @@ send me a DM to check your pull request
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <string>
+#include "Highway.h"
+#include "Car.h"
+#include "HighwayPatrol.h"
+#include "Motorcycle.h"
+#include "SemiTruck.h"
+
 
 int main()
 {
     Highway highway;
+    Car car("ford");
+    // Motorcycle motorcycle("ducati");
     
-    std::vector<Car> cars;
-    std::vector<Motorcycle> motorcycles;
-    std::vector<SemiTruck> trucks;
+    // std::vector<Car> cars;
+    // std::vector<Motorcycle> motorcycles;
+    // std::vector<SemiTruck> trucks;
     
     /*
      instantiating vectors like this creates unexpected copies during the construction process:
@@ -89,7 +98,7 @@ int main()
      
      reserve how ever many cars, motorcycles, and trucks you'll create first
      */
-    cars.reserve(3); //reserving room for 3 Car instances
+    // cars.reserve(3); //reserving room for 3 Car instances
     
     /*
      Now that we have reserved space for our UDT instances inside the vector, we can construct them in-place inside the vector.
@@ -97,27 +106,27 @@ int main()
      
      use the vector member function 'emplace_back' to construct your car/truck/motorcycle instances in-place
      */
-    cars.emplace_back("janice"); //constructing the first Car instance in-place in the cars vector
+    // cars.emplace_back("janice"); //constructing the first Car instance in-place in the cars vector
     
-    /*
-     construct 2 more Car instances via emplace_back.
-     */
+    // /*
+    //  construct 2 more Car instances via emplace_back.
+    //  */
     
-    /*
-     now reserve and emplace_back your Trucks and Motorcyles
-     */
-    
-    
+    // /*
+    //  now reserve and emplace_back your Trucks and Motorcyles
+    //  */
     
     
-    assert(false);
-    //add the cars, motorcycles and trucks to the highway using range-based for() loops: for( element : vec ) { ... }
-    //be careful to not accidentally make element copies when iterating.
     
-    HighwayPatrol cop;
-    cop.scanHighway(&highway);
+    
+    // assert(false);
+    // //add the cars, motorcycles and trucks to the highway using range-based for() loops: for( element : vec ) { ... }
+    // //be careful to not accidentally make element copies when iterating.
+    
+    // HighwayPatrol cop;
+    // cop.scanHighway(&highway);
 
-    std::cout << "done" << std::endl;
+    // std::cout << "done" << std::endl;
 
     return 0;
 }
