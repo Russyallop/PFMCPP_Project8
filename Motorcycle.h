@@ -11,6 +11,6 @@ struct Motorcycle : public Vehicle
     void lanesplitAndRace( int topSpeed = std::numeric_limits<int>::max() );
     
     void tryToEvade() override;
-
+    
     void setSpeed(int s) override;
 };

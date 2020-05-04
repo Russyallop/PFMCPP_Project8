@@ -52,6 +52,7 @@ send me a DM to check your pull request
 #include <algorithm>
 #include <cassert>
 #include <string>
+
 #include "Highway.h"
 #include "Car.h"
 #include "HighwayPatrol.h"
@@ -62,12 +63,13 @@ send me a DM to check your pull request
 int main()
 {
     Highway highway;
-    Car car("ford");
-    // Motorcycle motorcycle("ducati");
+
     
-    // std::vector<Car> cars;
-    // std::vector<Motorcycle> motorcycles;
-    // std::vector<SemiTruck> trucks;
+    std::vector<Car> cars;
+    std::vector<Motorcycle> motorcycles;
+    std::vector<SemiTruck> trucks;
+
+    
     
     /*
      instantiating vectors like this creates unexpected copies during the construction process:
@@ -116,17 +118,35 @@ int main()
     //  now reserve and emplace_back your Trucks and Motorcyles
     //  */
     
-    
-    
-    
-    // assert(false);
-    // //add the cars, motorcycles and trucks to the highway using range-based for() loops: for( element : vec ) { ... }
-    // //be careful to not accidentally make element copies when iterating.
-    
-    // HighwayPatrol cop;
-    // cop.scanHighway(&highway);
 
-    // std::cout << "done" << std::endl;
+    cars.reserve(3);
+    cars.emplace_back("ford");
+    cars.emplace_back("ferrari");
+    cars.emplace_back("honda");
+    motorcycles.reserve(2);
+    motorcycles.emplace_back("ducati");
+    motorcycles.emplace_back("harley");
+    trucks.reserve(1);
+    trucks.emplace_back("chevy");
+
+    for(Car& car : cars)
+    {
+        highway.addVehicle(&car);
+    }
+    for(Motorcycle& motorcycle : motorcycles)
+    {
+        highway.addVehicle(&motorcycle);
+    }
+    for(SemiTruck& semiTruck : trucks)
+    {
+        highway.addVehicle(&semiTruck);
+    }
+
+
+    HighwayPatrol cop;
+    cop.scanHighway(&highway);
+
+    std::cout << "done" << std::endl;
 
     return 0;
 }
