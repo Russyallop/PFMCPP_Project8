@@ -29,6 +29,7 @@ your task:
 
     5) Add a Truck type
         semi-trucks don't evade when they're pulled over, unlike cars and motorcycles.  
+        They'll also need a member function that can be called when they are added to the highway.  Look at the Highway member functions for more hints on this.
 
     6) Add some Cars to the Highway
     7) Add some Motorcycles to the Highway
@@ -37,20 +38,26 @@ your task:
     9) clear any warnings as best you can, based on what you've learned in the previous projects
         see the note in main() about implementing the special member functions.
         This will clear a lot of warnings if implemented correctly.
-
- Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
-Make a pull request after you make your first commit and pin the pull request link to our DM thread.
-
-send me a DM to check your pull request
-
- Wait for my code review.
  */
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <cassert>
+
+/*
+ MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
+
+ Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
+ 
+ If you didn't already: 
+    Make a pull request after you make your first commit
+    pin the pull request link and this repl.it link to our DM thread in a single message.
+
+ send me a DM to review your pull request when the project is ready for review.
+
+ Wait for my code review.
+ */
 
 int main()
 {
