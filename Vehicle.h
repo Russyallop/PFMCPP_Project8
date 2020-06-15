@@ -5,7 +5,6 @@
 
 struct HighwayPatrol;
 
-
 struct Vehicle
 {
     Vehicle(const std::string& n) : name(n) { }
@@ -16,25 +15,17 @@ struct Vehicle
     
     virtual void setSpeed(int s)
     {
-        std::cout<<"vehicle::setSpeed"<<" is called" << std::endl;
-        std::cout << "\nHighway(vehicle) is adjusting " << name << "'s speed to " << s << " mph" << std::endl;
+        std::cout << "\nHighway is adjusting " << name << "'s speed to " << s << " mph" << std::endl;
         speed = s;
     }
     
     virtual void tryToEvade()
     {
-        std::cout<<"vehicle::tryToEvade"<<" is called" << std::endl;
         std::cout << name << ": you'll never take me alive, ya dirty coppers!" << std::endl;
         setSpeed(100);
-    }
-    void print()
-    {
-        std::cout<<"\n"<<name<<" is in vehicles"<<std::endl;
     }
 protected:
     int speed = 0;
     std::string name;
     friend HighwayPatrol;
-
-    
 };

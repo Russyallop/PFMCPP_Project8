@@ -29,6 +29,7 @@ your task:
 
     5) Add a Truck type
         semi-trucks don't evade when they're pulled over, unlike cars and motorcycles.  
+        They'll also need a member function that can be called when they are added to the highway.  Look at the Highway member functions for more hints on this.
 
     6) Add some Cars to the Highway
     7) Add some Motorcycles to the Highway
@@ -37,21 +38,12 @@ your task:
     9) clear any warnings as best you can, based on what you've learned in the previous projects
         see the note in main() about implementing the special member functions.
         This will clear a lot of warnings if implemented correctly.
-
- Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
-Make a pull request after you make your first commit and pin the pull request link to our DM thread.
-
-send me a DM to check your pull request
-
- Wait for my code review.
  */
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <cassert>
-#include <string>
 
 #include "Highway.h"
 #include "Car.h"
@@ -59,17 +51,23 @@ send me a DM to check your pull request
 #include "Motorcycle.h"
 #include "SemiTruck.h"
 
+/*
+ MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
+
+ Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
+ 
+ If you didn't already: 
+    Make a pull request after you make your first commit
+    pin the pull request link and this repl.it link to our DM thread in a single message.
+
+ send me a DM to review your pull request when the project is ready for review.
+
+ Wait for my code review.
+ */
 
 int main()
 {
-    Highway highway;
 
-    
-    std::vector<Car> cars;
-    std::vector<Motorcycle> motorcycles;
-    std::vector<SemiTruck> trucks;
-
-    
     
     /*
      instantiating vectors like this creates unexpected copies during the construction process:
@@ -100,7 +98,7 @@ int main()
      
      reserve how ever many cars, motorcycles, and trucks you'll create first
      */
-    // cars.reserve(3); //reserving room for 3 Car instances
+//    cars.reserve(3); //reserving room for 3 Car instances
     
     /*
      Now that we have reserved space for our UDT instances inside the vector, we can construct them in-place inside the vector.
@@ -108,17 +106,22 @@ int main()
      
      use the vector member function 'emplace_back' to construct your car/truck/motorcycle instances in-place
      */
-    // cars.emplace_back("janice"); //constructing the first Car instance in-place in the cars vector
+//    cars.emplace_back("janice"); //constructing the first Car instance in-place in the cars vector
     
-    // /*
-    //  construct 2 more Car instances via emplace_back.
-    //  */
+    /*
+     construct 2 more Car instances via emplace_back.
+     */
     
-    // /*
-    //  now reserve and emplace_back your Trucks and Motorcyles
-    //  */
+    /*
+     now reserve and emplace_back your Trucks and Motorcyles
+     */
     
-
+    Highway highway;
+    
+    std::vector<Car> cars;
+    std::vector<Motorcycle> motorcycles;
+    std::vector<SemiTruck> trucks;
+    
     cars.reserve(3);
     cars.emplace_back("ford");
     cars.emplace_back("ferrari");
@@ -128,7 +131,7 @@ int main()
     motorcycles.emplace_back("harley");
     trucks.reserve(1);
     trucks.emplace_back("chevy");
-
+    
     for(Car& car : cars)
     {
         highway.addVehicle(&car);
@@ -141,12 +144,10 @@ int main()
     {
         highway.addVehicle(&semiTruck);
     }
-
-
     HighwayPatrol cop;
+    
     cop.scanHighway(&highway);
 
-    std::cout << "done" << std::endl;
 
     return 0;
 }

@@ -13,3 +13,4 @@ void SemiTruck::setSpeed(int s)
 {
     Vehicle::setSpeed(s);
 }
+

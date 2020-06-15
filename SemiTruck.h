@@ -12,3 +12,4 @@ struct SemiTruck : public Vehicle
     
     void setSpeed(int s) override;
 };
+
