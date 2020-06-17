@@ -2,23 +2,7 @@
 
 Motorcycle::Motorcycle(const std::string& n) : Vehicle(n) {}
 
-Motorcycle::Motorcycle(const Motorcycle& other)
-{
-    this->speed = other.speed;
-    this->name = other.name;
-}
 
-Motorcycle::Motorcycle& operator= (const Motorcycle& other)
-{
-    this->speed = other.speed;
-    this->name = other.name;
-    return *this;
-}
-
-Motorcycle::~Motorcycle()
-{
-    
-}
 
 void Motorcycle::lanesplitAndRace( int topSpeed )
 {

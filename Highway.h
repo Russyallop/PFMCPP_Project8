@@ -18,3 +18,4 @@ private:
     std::vector<Vehicle*> vehicles;
     friend HighwayPatrol;
 };
+

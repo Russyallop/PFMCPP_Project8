@@ -4,23 +4,7 @@
 
 Car::Car(const std::string& n) : Vehicle(n) {}
 
-Car::Car(const Car& other)
-{
-    this->speed = other.speed;
-    this->name = other.name;
-}
 
-Car::Car& operator= (const Car& other)
-{
-    this->speed = other.speed;
-    this->name = other.name;
-    return *this;
-}
-
-Car::~Car()
-{
-    
-}
 
 void Car::closeWindows()
 {
