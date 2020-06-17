@@ -136,17 +136,17 @@ int main()
     {
         highway.addVehicle(&car);
     }
-    for(Motorcycle& motorcycle : motorcycles)
-    {
-        highway.addVehicle(&motorcycle);
-    }
-    for(SemiTruck& semiTruck : trucks)
-    {
-        highway.addVehicle(&semiTruck);
-    }
-    HighwayPatrol cop;
+    // for(Motorcycle& motorcycle : motorcycles)
+    // {
+    //     highway.addVehicle(&motorcycle);
+    // }
+    // for(SemiTruck& semiTruck : trucks)
+    // {
+    //     highway.addVehicle(&semiTruck);
+    // }
+    // HighwayPatrol cop;
     
-    cop.scanHighway(&highway);
+    // cop.scanHighway(&highway);
 
 
     return 0;
