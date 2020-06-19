@@ -6,6 +6,8 @@ Car::Car(const std::string& n) : Vehicle(n) {}
 
 
 
+
+
 void Car::closeWindows()
 {
     setSpeed(70);

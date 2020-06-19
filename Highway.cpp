@@ -2,6 +2,7 @@
 #include "Vehicle.h"
 #include "Car.h"
 #include "Motorcycle.h"
+#include "SemiTruck.h"
 
 #include <cassert>
 
@@ -24,6 +25,10 @@ void Highway::addVehicleInternal(Vehicle* v)
     {
         motorcycle->lanesplitAndRace(100);
     }
+    if(auto* semiTruck = dynamic_cast<SemiTruck*>(v))
+    {
+        semiTruck->driveInSlowLane();
+    }
 }
 
 void Highway::removeVehicleInternal(Vehicle* v)
@@ -31,13 +36,15 @@ void Highway::removeVehicleInternal(Vehicle* v)
 
     if(auto* car = dynamic_cast<Car*>(v))
     {
-        
         car->tryToEvade();
     }
     if(auto* motorcycle = dynamic_cast<Motorcycle*>(v))
-    {
-        
+    {   
         motorcycle->tryToEvade();
+    }
+    if(auto* semiTruck = dynamic_cast<SemiTruck*>(v))
+    {
+        semiTruck->pullInToRoadside();
     }
 }
 
@@ -52,6 +59,16 @@ void Highway::removeVehicle(Vehicle* v)
                                vehicles.end(), 
                                v), 
                    vehicles.end());
+    std::cout << "\n" << v->name << " removed" << std::endl;
     removeVehicleInternal(v);
 }
 
+// For debugging
+void Highway::printVehicles(std::string point)
+{
+    std::cout << point;
+    for(Vehicle* vehicle : vehicles)
+    {
+        std::cout << vehicle->name << " ";
+    }
+}
