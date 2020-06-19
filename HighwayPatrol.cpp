@@ -7,28 +7,21 @@ HighwayPatrol::HighwayPatrol() : Vehicle("HighwayPatrol")
 
 }
 
+HighwayPatrol::~HighwayPatrol() = default;
+
 void HighwayPatrol::scanHighway(Highway* h)
 {
-    std::cout << name << "\n: scanning highway for speeders" << std::endl;
+    std::cout << name << ": scanning highway for speeders" << std::endl;
 
-    h->printVehicles("before for loop :");
-
-    // for( size_t i = 0; i < h->vehicles.size(); ++i  )
-    for( size_t i = h->vehicles.size(); --i; i >= 0 )
+    for( size_t i = h->vehicles.size(); --i;  )
     {
-        std::cout <<"i is: " << i << std::endl;
         auto* v = h->vehicles[i];
-        std::cout << "\n" << v->name << " checking" << std::endl;
         if( v->speed > h->speedLimit + 5 )
         {
             pullOver(v, v->speed > (h->speedLimit + 15), h );
             h->changeSpeed(50); //slow down for the highway patrol
         }
-        std::cout << "\n" << v->name << " scanned" << std::endl;
-        h->printVehicles("after if statement :");
-        
     }
-    std::cout << "after for loop scope" << std::endl;
 }
 
 void HighwayPatrol::pullOver( Vehicle* v, bool willArrest, Highway* h )

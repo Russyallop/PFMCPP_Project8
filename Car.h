@@ -1,11 +1,11 @@
 #pragma once
 #include "Vehicle.h"
 
-struct Car : public Vehicle
+struct Car : Vehicle
 {
     Car(const std::string& s);
     
-    ~Car() = default;
+    ~Car() override = default;
     Car(const Car&) = default;
     Car& operator=(const Car&) = default;
 
@@ -13,3 +13,4 @@ struct Car : public Vehicle
 
     void tryToEvade() override;
 };
+

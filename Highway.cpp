@@ -1,10 +1,7 @@
 #include "Highway.h"
-#include "Vehicle.h"
 #include "Car.h"
 #include "Motorcycle.h"
 #include "SemiTruck.h"
-
-#include <cassert>
 
 void Highway::changeSpeed(int newSpeed)
 {
@@ -63,12 +60,3 @@ void Highway::removeVehicle(Vehicle* v)
     removeVehicleInternal(v);
 }
 
-// For debugging
-void Highway::printVehicles(std::string point)
-{
-    std::cout << point;
-    for(Vehicle* vehicle : vehicles)
-    {
-        std::cout << vehicle->name << " ";
-    }
-}
