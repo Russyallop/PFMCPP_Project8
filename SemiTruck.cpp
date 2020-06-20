@@ -4,6 +4,8 @@
 SemiTruck::SemiTruck(const std::string& n) : Vehicle(n) {}
 
 SemiTruck::~SemiTruck() = default;
+SemiTruck::SemiTruck(const SemiTruck&) = default;
+SemiTruck& SemiTruck::operator=(const SemiTruck&) = default;
 
 void SemiTruck::driveInSlowLane()
 {

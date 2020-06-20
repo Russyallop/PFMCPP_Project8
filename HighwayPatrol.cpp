@@ -2,18 +2,17 @@
 #include "Highway.h"
 #include <iostream>
 
-HighwayPatrol::HighwayPatrol() : Vehicle("HighwayPatrol")
-{
-
-}
+HighwayPatrol::HighwayPatrol() : Vehicle("HighwayPatrol") {}
 
 HighwayPatrol::~HighwayPatrol() = default;
+HighwayPatrol::HighwayPatrol(const HighwayPatrol&) = default;
+HighwayPatrol& HighwayPatrol::operator=(const HighwayPatrol&) = default;
 
 void HighwayPatrol::scanHighway(Highway* h)
 {
     std::cout << name << ": scanning highway for speeders" << std::endl;
 
-    for( size_t i = h->vehicles.size(); --i;  )
+    for( size_t i = h->vehicles.size(); --i > 0;  )
     {
         auto* v = h->vehicles[i];
         if( v->speed > h->speedLimit + 5 )
