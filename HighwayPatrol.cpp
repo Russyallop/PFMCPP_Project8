@@ -1,16 +1,18 @@
 #include "HighwayPatrol.h"
+#include "Highway.h"
 #include <iostream>
 
-HighwayPatrol::HighwayPatrol() : Vehicle("HighwayPatrol")
-{
+HighwayPatrol::HighwayPatrol() : Vehicle("HighwayPatrol") {}
 
-}
+HighwayPatrol::~HighwayPatrol() = default;
+HighwayPatrol::HighwayPatrol(const HighwayPatrol&) = default;
+HighwayPatrol& HighwayPatrol::operator=(const HighwayPatrol&) = default;
 
 void HighwayPatrol::scanHighway(Highway* h)
 {
     std::cout << name << ": scanning highway for speeders" << std::endl;
 
-    for( size_t i = h->vehicles.size(); --i >= 0; )
+    for( size_t i = h->vehicles.size(); --i > 0;  )
     {
         auto* v = h->vehicles[i];
         if( v->speed > h->speedLimit + 5 )
@@ -28,7 +30,7 @@ void HighwayPatrol::pullOver( Vehicle* v, bool willArrest, Highway* h )
     if( willArrest )
     {
         //print the vehicle type in this std::cout between "THE [" and "] PULL". 
-        std::cout << name << ": YOU IN THE [ " << " ] PULL OVER AND SHOW YOUR HANDS" << std::endl;
+        std::cout << name << ": YOU IN THE [ " << v->name <<" ] PULL OVER AND SHOW YOUR HANDS" << std::endl;
         std::cout << "EVERYONE ELSE, SLOW DOWN!! \n\n\n";
         h->removeVehicle(v);
     }

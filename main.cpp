@@ -45,6 +45,13 @@ your task:
 #include <algorithm>
 #include <cassert>
 
+
+#include "Highway.h"
+#include "Car.h"
+#include "HighwayPatrol.h"
+#include "Motorcycle.h"
+#include "SemiTruck.h"
+
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -61,11 +68,7 @@ your task:
 
 int main()
 {
-    Highway highway;
-    
-    std::vector<Car> cars;
-    std::vector<Motorcycle> motorcycles;
-    std::vector<SemiTruck> trucks;
+
     
     /*
      instantiating vectors like this creates unexpected copies during the construction process:
@@ -96,7 +99,7 @@ int main()
      
      reserve how ever many cars, motorcycles, and trucks you'll create first
      */
-    cars.reserve(3); //reserving room for 3 Car instances
+//    cars.reserve(3); //reserving room for 3 Car instances
     
     /*
      Now that we have reserved space for our UDT instances inside the vector, we can construct them in-place inside the vector.
@@ -104,7 +107,7 @@ int main()
      
      use the vector member function 'emplace_back' to construct your car/truck/motorcycle instances in-place
      */
-    cars.emplace_back("janice"); //constructing the first Car instance in-place in the cars vector
+//    cars.emplace_back("janice"); //constructing the first Car instance in-place in the cars vector
     
     /*
      construct 2 more Car instances via emplace_back.
@@ -114,17 +117,38 @@ int main()
      now reserve and emplace_back your Trucks and Motorcyles
      */
     
+    Highway highway;
     
+    std::vector<Car> cars;
+    std::vector<Motorcycle> motorcycles;
+    std::vector<SemiTruck> trucks;
     
+    cars.reserve(3);
+    cars.emplace_back("ford");
+    cars.emplace_back("ferrari");
+    cars.emplace_back("honda");
+    motorcycles.reserve(2);
+    motorcycles.emplace_back("ducati");
+    motorcycles.emplace_back("harley");
+    trucks.reserve(1);
+    trucks.emplace_back("chevy");
     
-    assert(false);
-    //add the cars, motorcycles and trucks to the highway using range-based for() loops: for( element : vec ) { ... }
-    //be careful to not accidentally make element copies when iterating.
-    
+    for(Car& car : cars)
+    {
+        highway.addVehicle(&car);
+    }
+    for(Motorcycle& motorcycle : motorcycles)
+    {
+        highway.addVehicle(&motorcycle);
+    }
+    for(SemiTruck& semiTruck : trucks)
+    {
+        highway.addVehicle(&semiTruck);
+    }
     HighwayPatrol cop;
+    
     cop.scanHighway(&highway);
 
-    std::cout << "done" << std::endl;
 
     return 0;
 }
